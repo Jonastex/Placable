@@ -1,0 +1,7 @@
+#include "dialogs\define.hpp"
+#include "dialogs\placable.hpp"
+
+class CfgFunctions {
+    #include "fonctionslist.hpp"
+};
+
