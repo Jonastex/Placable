@@ -3,7 +3,7 @@ private _choix = param [0];
 switch (_choix)
 	do {
 		case 0 : {
-			_objet = [
+			private _objet = [
 				["Barriere", "RoadBarrier_small_F", 10],
 				["Cone", "RoadCone_F", 15]
 			];
@@ -19,7 +19,7 @@ switch (_choix)
 		case 1 : {
 			private _display = findDisplay 0104;
 			private _text = _display displayCtrl 010104;
-			_list = _display displayCtrl 020104;
+			private _list = _display displayCtrl 020104;
 			_tabl = (lbSelection _list) select 0;
 			if (isnil "_tabl") then {_tabl = 0;};
 			sleep 0.001;
@@ -27,11 +27,11 @@ switch (_choix)
 		};
 
 		case 2 : {
-			_list = (findDisplay 0104) displayCtrl 020104;
+			private _list = (findDisplay 0104) displayCtrl 020104;
 			_tabl = (lbSelection _list) select 0;
 			if (isnil "_tabl") then {_tabl = 0;};
-			_info = parseSimpleArray (_list lbData _tabl);
-			_prix = _info select 1;
+			private _info = parseSimpleArray (_list lbData _tabl);
+			private _prix = _info select 1;
 			closeDialog 0;
 			if (BANK < _prix) exitwith {hint "Vous n' avez pas assez d' argent sur votre commpte en banque";};
 			BANK = BANK - _prix;
@@ -52,13 +52,13 @@ switch (_choix)
 			_list_obj = ["RoadBarrier_small_F", "RoadCone_F"]; // référencer tout les classname de vos barrière ...
 			if ((param [1]) == 0)
 				then {
-					_obj = nearestObjects [player, _list_obj, 50]; // modifier le 50 si vous voulez modifier le rayon d' action
+					private _obj = nearestObjects [player, _list_obj, 50]; // modifier le 50 si vous voulez modifier le rayon d' action
 					if ((count _obj) == 0) exitwith {hint "Aucun object a proximiter";};
 					{
 						deleteVehicle _x;
 					} forEach _obj;
 				}else {
-					_sele = typeof cursorObject;
+					private _sele = typeof cursorObject;
 					if (_sele == "") exitwith {hint "Veuillez viser un object";};
 					if ((_list_obj find _sele) == -1) exitwith {hint "Veuillez Viser un object plaçable";};
 					deleteVehicle cursorObject;
